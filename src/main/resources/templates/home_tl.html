@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Página Inicial</title>
+</head>
+<body>
+    <h1 th:text="#{main.titulo}"}>Departamentos</h1>
+    <ul>
+    <li th:each="departamento : ${departamentos}"
+        th:text="${departamento}">valor</li>
+    </ul>
+    <p>
+    Página gerada em <span th:text="${data}">valor</span>
+    </p>
+</body>
+</html>

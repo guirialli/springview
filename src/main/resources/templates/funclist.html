@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Funcionarios</title>
+</head>
+
+<body>
+	<h1>Funcionários</h1>
+	<a th:href="@{/funcionarios/cadastro}">Novo Funcionário</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Matricula</th>
+				<th>Nome</th>
+				<th>Cadastro</th>
+				<th>Depto</th>
+				<th>Opções</th>
+			</tr>
+		</thead>
+		<tbody th:remove="all-but-first">
+			<tr th:each="funcionario : ${funcionarios}">
+				<td th:text="${funcionario.matricula}"></td>
+				<td th:text="${funcionario.nome}"></td>
+				<td th:text="${#dates.format(funcionario.dataCadastro,'dd/MM/yyyy')}">
+				</td>
+				<td th:text="${funcionario.departamento.nome}"></td>
+				<td>
+					<a th:href="@{/funcionarios/excluir(matricula=${funcionario.matricula})}">
+						Excluir</a>
+					<a th:href="@{/funcionarios/cadastro/{matr}(matr=${funcionario.matricula})}">
+						Alterar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
